@@ -17,7 +17,7 @@ steps:
   displayName: Install .net version
   inputs:
     packageType: 'sdk'
-    version: '6.0'
+    version: '6.x'
 
 - task: DotNetCoreCLI@2
   displayName: restores nuget dependancies
@@ -29,7 +29,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --no-build'
+    arguments: '--configuration $(buildConfiguration) --no-restore'
 
 - task: DotNetCoreCLI@2
   displayName: Publish Artifacts
